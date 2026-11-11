@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "oxidux": {
+      "type": "http",
+      "url": "${OXIDUX_MCP_URL:-https://api.oxidux.com/mcp}",
+      "headers": { "Authorization": "Bearer ${OXIDUX_TOKEN}" }
+    }
+  }
+}

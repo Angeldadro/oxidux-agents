@@ -1,0 +1,12 @@
+{
+  "name": "oxidux-agents",
+  "owner": { "name": "Misgara Tech" },
+  "metadata": { "description": "Claude Code plugins for working with Oxidux tasks and agent swarms." },
+  "plugins": [
+    {
+      "name": "oxidux",
+      "source": "./plugins/oxidux",
+      "description": "Oxidux MCP server, a task-workflow skill and a swarm worker agent."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "oxidux",
+  "description": "Work Oxidux tasks from Claude Code: MCP server, task-workflow skill (single agent, orchestrator, subagent) and a swarm worker agent.",
+  "version": "0.1.0",
+  "author": { "name": "Misgara Tech" },
+  "homepage": "https://oxidux.com",
+  "repository": "https://github.com/Misgara-tech/oxidux-agents",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://oxidux.com/privacy",
+  "keywords": ["oxidux", "tasks", "mcp", "agents", "swarm", "orchestrator"]
+}
