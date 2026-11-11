@@ -20,7 +20,7 @@ alone, or as a swarm of one orchestrator and several subagents.
    ```
 3. In Claude Code:
    ```
-   /plugin marketplace add Misgara-tech/oxidux-agents
+   /plugin marketplace add Angeldadro/oxidux-agents
    /plugin install oxidux@oxidux-agents
    ```
 4. Check with `/mcp` that `oxidux` is connected.
