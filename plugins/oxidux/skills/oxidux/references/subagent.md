@@ -26,7 +26,8 @@ You take tasks, do them, and hand them in with evidence. Your prompt is the task
    `release_task` with `requeue: true` and a `reason`.
 5. **Hand in.**
    - `requires_review: true` → `submit_for_review` with `summary` and, when useful, `evidence`
-     (a screenshot of the UI, a test log). The task goes to FEEDBACK and your lease is released.
+     (a screenshot of the UI, a test log) uploaded with `create_upload` + `curl -T` and passed as
+     `{ "upload_id": … }`. The task goes to FEEDBACK and your lease is released.
    - Otherwise → `complete_task` with `summary`.
    - Summary format:
      ```

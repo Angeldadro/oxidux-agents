@@ -34,7 +34,8 @@ Reply to the user in their language; write task text in the language the workspa
    `question` (you cannot continue without an answer), `answer`, `review`, `handoff`.
 5. **Close properly.** `complete_task`, or `submit_for_review` if the task `requires_review`. The summary
    always says: what changed, where (commit, PR, file, URL), and what was not verified. Long reports
-   go as a file (`attach_file` or the `evidence` field), not pasted into the summary.
+   and screenshots go as files: `create_upload`, `curl -T <file> <upload_url>`, then the `upload_id`.
+   Never write base64 yourself.
 6. **If blocked,** `release_task` with a `reason` instead of letting the lease expire silently.
 7. **Respect others' work.** Do not edit, re-prioritize, change status of, or delete tasks you did not
    create in this session without asking the user. Never claim a task assigned to another agent.

@@ -43,8 +43,20 @@ Priorities: `LOW` `MEDIUM` `HIGH` `URGENT` `CRITICAL`. Urgency: `LOW` `MEDIUM` `
 
 ## Files
 
-`file`, `evidence` and `image` objects are `{ file_name, mime_type, content_base64 }`, max 10 MB
-decoded, and count toward the workspace's storage plan. Prefer PNG screenshots and Markdown reports.
+Never paste a file as base64 yourself: you would generate every byte as output tokens.
+
+1. `create_upload` with `file_name` and `mime_type` → `upload_id` and `upload_url` (valid 15 min, one use).
+2. Upload with Bash: `curl -sS -T ./screenshot.png "<upload_url>"` (PUT; no headers needed).
+3. Pass `{ "upload_id": "<id>" }` as `file` (comment_task), `evidence` (submit_for_review), `image`
+   (review_task), or `upload_id` in `attach_file`.
+
+`content_base64` is still accepted for tiny text files when you have no shell. Max 10 MB per file; files
+count toward the workspace's storage plan. `read_file` sends images already reduced (≤1568 px, JPEG), so
+opening a screenshot costs about 1–2k tokens.
+
+| Tool | Use |
+|---|---|
+| `create_upload` | Reserve an upload; returns `upload_id`, `upload_url`, and the curl command. |
 
 ## Errors and what to do
 
