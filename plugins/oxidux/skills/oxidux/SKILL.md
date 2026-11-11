@@ -14,8 +14,9 @@ Reply to the user in their language; write task text in the language the workspa
   project's `CLAUDE.md` or `AGENTS.md`. If there is none, call `list_workspaces` (and `list_projects`),
   ask the user which one, and offer to save that line in `CLAUDE.md`. Never guess an ID.
 - **Agent name.** Use one stable name for the whole session and pass it as `agent` on every call that
-  accepts it: the role you were given (`ui-worker`, `orchestrator`…) or, working alone,
-  `claude-code@<hostname>`. Leases and comments are matched by this name; changing it orphans them.
+  accepts it: the name you were given at launch (any free-form name such as `ui-worker`,
+  `docs-worker`, `orchestrator`; there is no fixed list) or, working alone, `claude-code@<hostname>`.
+  Leases and comments are matched by this name; changing it orphans them.
 - **Role.** Pick one and read its reference before acting:
   - Working tasks one by one, or a subagent told to take tasks from a plan → [references/subagent.md](references/subagent.md)
   - Asked to split a job among agents, or to supervise/review their work → [references/orchestrator.md](references/orchestrator.md)
