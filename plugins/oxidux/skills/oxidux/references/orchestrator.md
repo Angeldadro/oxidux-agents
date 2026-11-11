@@ -46,8 +46,9 @@ start one per agent name, e.g. "Use oxidux-worker as `ui-worker` on plan <parent
 
 ## 3. Follow
 
-- `get_activity` with `parent_id` is your inbox: new comments (look for `kind: question`), status
-  changes, expired leases. Pass the returned `cursor` as `since` next time to see only what is new.
+- `wait_for_activity` with `parent_id` and your `agent` is your inbox: it waits up to 55 s and returns
+  as soon as there is a new comment (look for `kind: question`), status change or expired lease. Loop on
+  it, passing the returned `cursor` as `since`. `get_activity` gives the same without waiting.
 - `get_plan` gives the whole picture: each subtask's status, agent, lease, blockers, last comment and
   unanswered questions.
 - Answer questions with `comment_task` `kind: "answer"` on that subtask.
@@ -63,6 +64,7 @@ the result yourself (diff, tests, screenshot), then `review_task`:
 
 ## 5. Close
 
-When every subtask is DONE, verify the overall goal, then close the parent with `update_task`
+Closing the parent is your job, never a subagent's. When every subtask is DONE, verify the overall
+goal, then close the parent with `update_task`
 `status: "DONE"` (or `complete_task` if you claimed it) and give the user a short report: what was done,
 where, and what is still pending.

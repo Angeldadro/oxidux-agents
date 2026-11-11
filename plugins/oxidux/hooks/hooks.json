@@ -1,0 +1,13 @@
+{
+  "description": "Before a long Bash command, extend the Oxidux task leases you hold so they do not expire while it runs.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/extend-leases.sh\"", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

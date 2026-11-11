@@ -21,6 +21,7 @@ Priorities: `LOW` `MEDIUM` `HIGH` `URGENT` `CRITICAL`. Urgency: `LOW` `MEDIUM` `
 | `claim_task` | Take one task. Returns `lease_id`. |
 | `claim_next_task` | Take the most important free TODO (priority, urgency, age), optionally within `project_id` or `parent_id`. Returns `null` if none. |
 | `renew_lease` | Extend the lease (`lease_minutes` 1–120, default 15). |
+| `extend_leases` | Before a long command: extend every lease you hold (or only `agent`'s) to `lease_minutes` from now; never shortens. |
 | `release_task` | Give it back; `requeue` (default true) returns it to TODO; `reason` becomes a comment. |
 | `complete_task` | DONE + `summary` as delivery comment. Not for tasks that require review. |
 | `submit_for_review` | FEEDBACK + `summary` + optional `evidence` file; releases the lease. |
@@ -36,6 +37,7 @@ Priorities: `LOW` `MEDIUM` `HIGH` `URGENT` `CRITICAL`. Urgency: `LOW` `MEDIUM` `
 | `update_task` | Change only the fields sent, including `assigned_agent` (`""` = anyone), `requires_review`, `depends_on` (task IDs; `[]` clears). |
 | `get_plan` | Parent overview: per subtask status, agent, review, blockers, lease, last comment, open questions. |
 | `get_activity` | Events since `since` (default: last hour) in the workspace or under `parent_id`; returns `cursor`. |
+| `wait_for_activity` | Like `get_activity` but waits up to `timeout_seconds` (max 55) for something new; `agent` ignores your own comments; `timed_out: true` if nothing happened. |
 | `review_task` | `approve: true` → DONE; `false` → TODO with `comment` and optional `image`. |
 | `delete_task` | Moves to the workspace trash (restorable). Ask the user first. |
 

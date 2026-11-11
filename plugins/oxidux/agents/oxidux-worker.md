@@ -12,7 +12,9 @@ Your launch message gives you:
 If any of them is missing, stop and say which one.
 
 Loop:
-1. `claim_next_task` with `workspace_id`, `parent_id` and `agent`. If it returns `null`, stop.
+1. `claim_next_task` with `workspace_id`, `parent_id` and `agent`. If it returns `null`, check
+   `get_plan`: if tasks assigned to you (or to anyone) are only waiting for dependencies, call
+   `wait_for_activity` on the parent with your `agent` and retry; if nothing is left for you, stop.
 2. Read the task description (it is your prompt), its comments (latest `review` first if it came back)
    and its attachments with `read_file`.
 3. Do the work. Renew the lease every ~10 minutes. Ask with a `question` comment when you cannot
